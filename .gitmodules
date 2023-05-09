@@ -1,0 +1,3 @@
+[submodule "visualize-neural-network"]
+	path = visualize_neural_network
+	url = git@github.com:jzliu-100/visualize-neural-network.git
