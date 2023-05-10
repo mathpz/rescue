@@ -18,11 +18,11 @@ regr_1.fit(x_train, y_train)
 # Predição
 y_1 = regr_1.predict(x_test)
 
-tree.export_graphviz(regr_1, out_file='regression_tree.dot', 
-                     feature_names=["qPA", "pulso", "respiração"],
-                     class_names=True, label='all',
-                     precision=2,special_characters=True,
-                     filled=True, rounded=True)
+#tree.export_graphviz(regr_1, out_file='regression_tree.dot', 
+#                     feature_names=["qPA", "pulso", "respiração"],
+#                     class_names=True, label='all',
+#                     precision=2,special_characters=True,
+#                     filled=True, rounded=True)
 
 # Mean squared error (MSE) and coefficient of determination (R^2) for each model
 mse_1 = mean_squared_error(y_test, y_1)
