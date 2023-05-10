@@ -34,7 +34,8 @@ for index in range(0, 5):
 
 # Mean squared error (MSE) and coefficient of determination (R^2)
 mse = mean_squared_error(y_test, y_pred)
+rmse = np.sqrt(mse)
 r2 = r2_score(y_test, y_pred)
 
-print(f"Mean squared error (MSE): {mse:.2f}")
+print(f"Mean squared error (MSE): {mse:.2f} \n Root mean squared error (RMSE): {rmse:.2f}")
 print(f"Coefficient of determination (R^2): {r2:.2f}")
