@@ -46,6 +46,7 @@ print(f"R-squared: {r2:.2f}")
 # Plot the predictions against the actual values
 plt.scatter(y_test, y_pred)
 plt.xlabel("Actual")
+plt.xlim(left=0)
 plt.ylabel("Predicted")
 plt.show()
 

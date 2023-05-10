@@ -10,17 +10,13 @@ import numpy as np
 data_header = ["id", "pSist", "pDiast", "qPA", "pulso", "respiração", "gravidade", "classe"]
 data = pd.read_csv("treino_sinais_vitais_com_label.txt", sep=',', names=data_header, index_col=0)
 
-x_train, x_test, y_train, y_test = train_test_split(data[["qPA", "pulso", "respiração"]], data["classe"], test_size=0.2)
+x_train, x_test, y_train, y_test = train_test_split(data[["qPA", "pulso", "respiração", "gravidade"]], data["classe"], test_size=0.2)
 
 y_train = tf.keras.utils.to_categorical(y_train -1, num_classes=4)
 
 
 model = tf.keras.Sequential([
-    tf.keras.layers.Dense(64),  
-    tf.keras.layers.Activation('relu'),
-    tf.keras.layers.Dense(32),  
-    tf.keras.layers.Activation('relu'),
-    tf.keras.layers.Dense(16),  
+    tf.keras.layers.Dense(8),  
     tf.keras.layers.Activation('relu'),
     tf.keras.layers.Dense(8),  
     tf.keras.layers.Activation('relu'),
@@ -35,7 +31,7 @@ model.compile(optimizer='adam',
 
 
 # Train the model
-history = model.fit(x_train, y_train, epochs=5000, verbose=0)
+history = model.fit(x_train, y_train, epochs=1000, verbose=0)
 
 # Evaluate the model on the test set
 y_pred_one_hot = model.predict(x_test)
