@@ -1,7 +1,6 @@
 from sklearn.neural_network import MLPClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error, r2_score, confusion_matrix, ConfusionMatrixDisplay
-from visualize_neural_network.VisualizeNN import *
 import matplotlib.pyplot as plt
 import tensorflow as tf
 import pandas as pd
@@ -37,16 +36,15 @@ history = model.fit(x_train, y_train, epochs=1000, verbose=0)
 y_pred_one_hot = model.predict(x_test)
 y_pred_tf = np.argmax(y_pred_one_hot, axis=1) + 1 
 
-mse_tf = mean_squared_error(y_test, y_pred_tf)
+
 
 # Mean squared error (MSE) and coefficient of determination (R^2) for each model
-mse_2 = mean_squared_error(y_test, y_pred_tf)
-
-
+mse = mean_squared_error(y_test, y_pred_tf)
+rmse = np.sqrt(mse)
 r2_2 = r2_score(y_test, y_pred_tf)
-print(f"Mean squared error (MSE) TF: {mse_2:.2f}")
 
-print(f"R^2 (MSE) TF: {r2_2:.2f}")
+print(f"Mean squared error (MSE): {mse:.2f} \nRoot mean squared error (RMSE): {rmse:.2f}")
+print(f"R^2 (MSE): {r2_2:.2f}")
 # Compute the confusion matrix
 cm = confusion_matrix(y_test, y_pred_tf)
 cmd = ConfusionMatrixDisplay(cm, display_labels=['Crítico', 'Instável', 'p. Estável', 'Estável'])

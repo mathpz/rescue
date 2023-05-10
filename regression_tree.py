@@ -1,5 +1,6 @@
 from sklearn import tree
 import pandas as pd
+import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error, r2_score
 
@@ -26,12 +27,12 @@ y_1 = regr_1.predict(x_test)
 
 # Mean squared error (MSE) and coefficient of determination (R^2) for each model
 mse_1 = mean_squared_error(y_test, y_1)
-
+rmse = np.sqrt(mse_1)
 r2_1 = r2_score(y_test, y_1)
 
-print(f"Mean squared error (MSE) - max_depth=None: {mse_1:.2f}")
+print(f"Mean squared error (MSE): {mse_1:.2f} \nRoot mean squared error (RMSE): {rmse:.2f}")
 
-print(f"Coefficient of determination (R^2) - max_depth=None: {r2_1:.2f}")
+print(f"Coefficient of determination (R^2): {r2_1:.2f}")
 
 
 

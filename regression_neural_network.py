@@ -1,6 +1,6 @@
 from sklearn.neural_network import MLPClassifier
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import mean_squared_error, r2_score, confusion_matrix, ConfusionMatrixDisplay
+from sklearn.metrics import mean_squared_error, r2_score
 from visualize_neural_network.VisualizeNN import *
 import matplotlib.pyplot as plt
 import tensorflow as tf

@@ -1,8 +1,9 @@
 from sklearn import tree
 import pandas as pd
+import numpy as np
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import mean_squared_error, r2_score, confusion_matrix
-
+from sklearn.metrics import mean_squared_error, r2_score, confusion_matrix, ConfusionMatrixDisplay
+import matplotlib.pyplot as plt
 
 # dataset | f(aPA, pulso, espiração) = gravidade
 data_header = ["id", "pSist", "pDiast", "qPA", "pulso", "respiração", "gravidade", "classe"]
@@ -23,13 +24,15 @@ tree.export_graphviz(regr_1, out_file='decision_tree.dot', filled=True,
 
 # Mean squared error (MSE) and coefficient of determination (R^2) for each model
 mse_1 = mean_squared_error(y_test, y_1)
-
+rmse = np.sqrt(mse_1)
 r2_1 = r2_score(y_test, y_1)
 
-print(f"Mean squared error (MSE): {mse_1:.2f}")
+print(f"Mean squared error (MSE): {mse_1:.2f} \n Root mean squared error (RMSE): {rmse:.2f}")
 print(f"Coefficient of determination (R^2): {r2_1:.2f}")
 
 cm = confusion_matrix(y_test, y_1)
 print(f"Confusion Matrix:\n{cm}")
-
+cmd = ConfusionMatrixDisplay(cm, display_labels=['Crítico', 'Instável', 'Pot. Estável', 'Estável'])
+cmd.plot()
+plt.show()
 
